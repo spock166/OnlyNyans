@@ -1,0 +1,282 @@
+/* Reset and Base Styles */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+    min-height: 100vh;
+    padding: 20px;
+}
+
+.container {
+    max-width: 1200px;
+    margin: 0 auto;
+    background: white;
+    border-radius: 10px;
+    box-shadow: 0 10px 40px rgba(0, 0, 0, 0.2);
+    padding: 30px;
+}
+
+/* Header */
+header {
+    text-align: center;
+    margin-bottom: 30px;
+}
+
+h1 {
+    color: #333;
+    margin-bottom: 20px;
+}
+
+/* Mode Selector */
+.mode-selector {
+    display: flex;
+    justify-content: center;
+    gap: 10px;
+    margin-bottom: 20px;
+}
+
+.mode-btn {
+    padding: 10px 20px;
+    border: 2px solid #667eea;
+    background: white;
+    color: #667eea;
+    border-radius: 5px;
+    cursor: pointer;
+    font-size: 16px;
+    font-weight: 600;
+    transition: all 0.3s ease;
+}
+
+.mode-btn:hover {
+    background: #f0f0f0;
+}
+
+.mode-btn.active {
+    background: #667eea;
+    color: white;
+}
+
+/* Mode Content */
+.mode-content {
+    display: none;
+}
+
+.mode-content.active {
+    display: block;
+}
+
+/* Controls */
+.controls {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 15px;
+    margin-bottom: 30px;
+    flex-wrap: wrap;
+}
+
+.controls label {
+    font-weight: 600;
+    color: #333;
+}
+
+.controls select {
+    padding: 8px 12px;
+    border: 2px solid #ddd;
+    border-radius: 5px;
+    font-size: 14px;
+    cursor: pointer;
+}
+
+.controls button {
+    padding: 10px 20px;
+    border: none;
+    background: #667eea;
+    color: white;
+    border-radius: 5px;
+    cursor: pointer;
+    font-size: 14px;
+    font-weight: 600;
+    transition: background 0.3s ease;
+}
+
+.controls button:hover {
+    background: #5568d3;
+}
+
+.controls button:disabled {
+    background: #ccc;
+    cursor: not-allowed;
+}
+
+/* Puzzle Container */
+.puzzle-container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    min-height: 400px;
+    padding: 20px;
+}
+
+/* Grid Wrapper */
+.grid-wrapper {
+    display: inline-block;
+    background: #f8f8f8;
+    padding: 20px;
+    border-radius: 8px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+}
+
+/* Grid Layout */
+.grid-container {
+    display: grid;
+    gap: 0;
+}
+
+/* Clues */
+.clue-cell {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 4px;
+    font-size: 12px;
+    font-weight: 600;
+    color: #333;
+    background: #f0f0f0;
+}
+
+.clue-cell.corner {
+    background: transparent;
+}
+
+.clue-numbers {
+    display: flex;
+    flex-direction: column;
+    gap: 2px;
+}
+
+.clue-cell.horizontal .clue-numbers {
+    flex-direction: row;
+    gap: 4px;
+}
+
+.clue-cell.satisfied {
+    background: #d4edda;
+    border: 2px solid #28a745;
+    font-weight: bold;
+    color: #155724;
+}
+
+/* Grid Cells */
+.grid-cell {
+    width: 30px;
+    height: 30px;
+    border: 1px solid #999;
+    background: white;
+    cursor: pointer;
+    position: relative;
+    transition: background 0.2s ease;
+}
+
+.grid-cell:hover {
+    background: #f0f0f0;
+}
+
+.grid-cell.filled {
+    background: #333;
+}
+
+.grid-cell.marked {
+    background: white;
+}
+
+.grid-cell.marked::before,
+.grid-cell.marked::after {
+    content: '';
+    position: absolute;
+    width: 70%;
+    height: 2px;
+    background: #999;
+    top: 50%;
+    left: 50%;
+}
+
+.grid-cell.marked::before {
+    transform: translate(-50%, -50%) rotate(45deg);
+}
+
+.grid-cell.marked::after {
+    transform: translate(-50%, -50%) rotate(-45deg);
+}
+
+/* Bold borders every 5 rows and columns */
+.grid-cell.border-right-bold {
+    border-right: 2px solid #333;
+}
+
+.grid-cell.border-bottom-bold {
+    border-bottom: 2px solid #333;
+}
+
+/* Message */
+.message {
+    text-align: center;
+    margin-top: 20px;
+    font-size: 18px;
+    font-weight: 600;
+    min-height: 30px;
+}
+
+.message.success {
+    color: #28a745;
+}
+
+.message.error {
+    color: #dc3545;
+}
+
+.message.info {
+    color: #667eea;
+}
+
+/* Back Link */
+.back-link {
+    text-align: center;
+    margin-top: 30px;
+    padding-top: 20px;
+    border-top: 2px solid #eee;
+}
+
+.back-link a {
+    color: #667eea;
+    text-decoration: none;
+    font-weight: 600;
+    font-size: 16px;
+    transition: color 0.3s ease;
+}
+
+.back-link a:hover {
+    color: #764ba2;
+}
+
+/* Responsive */
+@media (max-width: 768px) {
+    .container {
+        padding: 15px;
+    }
+
+    .grid-cell {
+        width: 25px;
+        height: 25px;
+    }
+
+    .controls {
+        flex-direction: column;
+        align-items: stretch;
+    }
+}

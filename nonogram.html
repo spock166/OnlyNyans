@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Nonogram Game - OnlyNyans</title>
+    <link rel="icon" href="Assets/icons/onlynyans.svg">
+    <link rel="stylesheet" href="Assets/styles/nonogram.css">
+</head>
+
+<body>
+    <div class="container">
+        <header>
+            <h1>Nonogram Game</h1>
+            <div class="mode-selector">
+                <button id="editor-mode-btn" class="mode-btn active">Editor</button>
+                <button id="play-mode-btn" class="mode-btn">Play</button>
+                <button id="random-mode-btn" class="mode-btn">Random</button>
+            </div>
+        </header>
+
+        <main>
+            <!-- Editor Mode -->
+            <div id="editor-mode" class="mode-content active">
+                <div class="controls">
+                    <label for="editor-size">Grid Size:</label>
+                    <select id="editor-size">
+                        <option value="10">10 × 10</option>
+                        <option value="15">15 × 15</option>
+                    </select>
+                    <button id="clear-grid-btn">Clear Grid</button>
+                    <button id="export-btn">Export Puzzle</button>
+                </div>
+                <div id="editor-container" class="puzzle-container"></div>
+            </div>
+
+            <!-- Play Mode -->
+            <div id="play-mode" class="mode-content">
+                <div class="controls">
+                    <input type="file" id="import-file" accept=".json" style="display: none;">
+                    <button id="import-btn">Import Puzzle</button>
+                    <button id="reset-btn">Reset</button>
+                    <button id="check-btn">Check Solution</button>
+                </div>
+                <div id="play-container" class="puzzle-container"></div>
+                <div id="message" class="message"></div>
+            </div>
+
+            <!-- Random Mode -->
+            <div id="random-mode" class="mode-content">
+                <div class="controls">
+                    <label for="random-size">Grid Size:</label>
+                    <select id="random-size">
+                        <option value="10">10 × 10</option>
+                        <option value="15">15 × 15</option>
+                    </select>
+                    <button id="generate-btn">Generate Random Puzzle</button>
+                </div>
+                <div id="random-container" class="puzzle-container"></div>
+                <div id="random-message" class="message"></div>
+            </div>
+        </main>
+
+        <div class="back-link">
+            <a href="index.html">← Back to OnlyNyans</a>
+        </div>
+    </div>
+
+    <!-- Scripts -->
+    <script src="Assets/scripts/nonogram/utils.js"></script>
+    <script src="Assets/scripts/nonogram/clues.js"></script>
+    <script src="Assets/scripts/nonogram/grid.js"></script>
+    <script src="Assets/scripts/nonogram/editor.js"></script>
+    <script src="Assets/scripts/nonogram/player.js"></script>
+    <script src="Assets/scripts/nonogram/solver.js"></script>
+    <script src="Assets/scripts/nonogram/generator.js"></script>
+    <script src="Assets/scripts/nonogram/app.js"></script>
+</body>
+
+</html>
